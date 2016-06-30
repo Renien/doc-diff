@@ -91,3 +91,6 @@ ENV/
 # avoid data and results folder 
 data
 results
+
+# avoid idea files
+.idea
