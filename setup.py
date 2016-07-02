@@ -8,5 +8,7 @@ setup(
     author='Renien',
     author_email='renien.john@gmail.com',
     license='MIT',
+    download_url = 'https://github.com/Renien/doc-diff/dist/1.0.0',
+    keywords = ['doc-diff', 'DataScience', 'ComparingDocuments', 'ComparingAlgo'],
     packages=find_packages(exclude=['test'])
 )
