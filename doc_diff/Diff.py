@@ -15,10 +15,10 @@ def gen_comp_report(diff1, diff2):
     now = datetime.datetime.now()
 
     # write the results for corresponding files
-    _write_out_results(evaluation_results[0], '../results/common_in_doc1-and-doc2' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[1], '../results/common_key_with_diff_values' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[2], '../results/exclusive_in_doc1' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[3], '../results/exclusive_in_doc2' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results[0], '../results/common_in_doc1-and-doc2-' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results[1], '../results/common_key_with_diff_values-' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results[2], '../results/exclusive_in_doc1-' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results[3], '../results/exclusive_in_doc2-' + now.strftime("%Y-%m-%d") + '.csv')
 
 
 def _write_out_results(data, filename):
@@ -41,25 +41,25 @@ def _compare_two_files(dict1, dict2):
     :param dict2: list of key and values
     :return: matching, un-matching, unknown (dict1) and additional (dict2) items
     """
-    matching_list = dict()
-    un_matching_list = dict()
-    unknown_list = dict()
+    common_in_doc1_and_doc2_list = dict()
+    common_key_with_diff_values_list = dict()
+    exclusive_in_doc1_list = dict()
     temp_known_keys = []
 
     for key, value in dict1.iteritems():
         if key in dict2:
             # do a string comparison
             if value != dict2[key]:
-                un_matching_list[key] = value + "||" + dict2[key]
+                common_key_with_diff_values_list[key] = value + "||" + dict2[key]
             else:
-                matching_list[key] = value
+                common_in_doc1_and_doc2_list[key] = value
             # store the key and filter at last
             temp_known_keys.append(key)
         else:
-            unknown_list[key] = value
+            exclusive_in_doc1_list[key] = value
 
-    additional_list = {k: v for k, v in dict2.iteritems() if k not in temp_known_keys}
-    return matching_list, un_matching_list, unknown_list, additional_list
+    exclusive_in_doc2_list = {k: v for k, v in dict2.iteritems() if k not in temp_known_keys}
+    return common_in_doc1_and_doc2_list, common_key_with_diff_values_list, exclusive_in_doc1_list, exclusive_in_doc2_list
 
 
 class Diff:
