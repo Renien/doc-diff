@@ -89,8 +89,8 @@ ENV/
 .ropeproject
 
 # avoid data and results folder 
-data
-results
+test/data
+test/doc-diff-results
 
 # avoid idea files
 .idea

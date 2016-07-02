@@ -3,8 +3,8 @@ from doc_diff import gen_comp_report
 
 if __name__ == '__main__':
     # Data file location
-    a_priori_csv_location = "../data/a-priori.csv"
-    pfp_csv_location = "../data/pfp.csv"
+    a_priori_csv_location = "./data/a-priori.csv"
+    pfp_csv_location = "./data/pfp.csv"
 
     # Process a-priori.csv data file
     a_priori_diff = Diff(a_priori_csv_location)
