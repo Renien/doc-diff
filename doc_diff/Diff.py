@@ -13,6 +13,7 @@ def gen_comp_report(diff1, diff2):
     # compute the diff of doc1 & doc2
     evaluation_results = _compare_two_files(diff1.data_dict, diff2.data_dict)
     now = datetime.datetime.now()
+    _create_result_folder()
 
     # write the results for corresponding files
     _write_out_results(evaluation_results['common_in_doc1_and_doc2_list'],
@@ -24,6 +25,15 @@ def gen_comp_report(diff1, diff2):
     _write_out_results(evaluation_results['exclusive_in_doc2_list'],
                        './doc-diff-results/exclusive_in_doc2-' + now.strftime("%Y-%m-%d") + '.csv')
 
+
+def _create_result_folder():
+    """
+    Check the result folder exists
+    if not create the folder
+    """
+    import os
+    if not path.exists('./doc-diff-results'):
+        os.makedirs('./doc-diff-results')
 
 
 def _write_out_results(data, filename):
@@ -87,7 +97,7 @@ class Diff:
         """
         with open(self._file_name, 'r') as ins:
             for line in ins:
-                self._no_of_records += 1 # calculate the row count
+                self._no_of_records += 1  # calculate the row count
                 self.construct_key_value(line, self._delimiter)
 
     @staticmethod
