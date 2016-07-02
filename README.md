@@ -35,7 +35,7 @@ Sample Recommendation
 
 ## Installation
 ```
-$ pin install #TODO
+$ pip install doc-diff
 ```
 
 ## Features
@@ -53,7 +53,7 @@ $ pin install #TODO
 ## Usage
 
 - Allow to generate the evaluation result files
-- Able to extratc the comparsion results as key-value list 
+- Able to extract the comparsion results as key-value list 
     - Using the diifferent dictionary objects you can present the results as you like (i.e Graphs, Venn diagram) 
 
 ## Comparison Report Format 
@@ -68,6 +68,28 @@ c36623	2256360,2398464,2503472,c27214||2256360,2398464,2503472,c27214,c79033
 c973955	1965886,c340951,c752950,c973951||1965886,c24224,c340951,c752950,c906950,c973951
 c25749	c25982||c205950,c25982,c65977
 ```
+
+## Package Directory Layout
+
+```
+doc-diff
+├── LICENSE                         # Contains License Agreement file
+├── README.md                       # Contains the details of doc-diff lib
+├── doc_diff                        # Root package 
+│   ├── Diff.py                     # Diff class
+│   ├── __init__.py                 # Package declaration 
+├── setup.py                        # Setup file for packaging 
+└── test                            # Test module (Includes the useage)
+    ├── __init__.py                 # Package declaration 
+    ├── data                        # Sample data
+    │   ├── a-priori.csv            # A-Priori algo results
+    │   └── pfp.csv                 # FP-Growth algo results
+    └── doc_diff_app.py             # Main method file 
+```
+
+## Contribute
+NEED TO CHANGE !!
+For any problem/question or if you think a feature that could make doc-diff lib more useful, do not hesitate to open an issue.
 
 ## License
 MIT © [Renien](https://twitter.com/RenienJoseph)
