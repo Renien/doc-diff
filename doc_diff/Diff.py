@@ -73,11 +73,8 @@ class Diff:
     def read_file(self):
         with open(self._file_name, 'r') as ins:
             for line in ins:
-                self.increment_recommendation_count()
+                self._no_of_records += 1 # calculate the row count
                 self.construct_key_value(line, self._delimiter)
-
-    def increment_recommendation_count(self):
-        self._no_of_records += 1
 
     @staticmethod
     def format_order_recommendations(data):
