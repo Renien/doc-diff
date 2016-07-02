@@ -15,10 +15,15 @@ def gen_comp_report(diff1, diff2):
     now = datetime.datetime.now()
 
     # write the results for corresponding files
-    _write_out_results(evaluation_results[0], '../results/common_in_doc1-and-doc2-' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[1], '../results/common_key_with_diff_values-' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[2], '../results/exclusive_in_doc1-' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[3], '../results/exclusive_in_doc2-' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results['common_in_doc1_and_doc2_list'],
+                       './doc-diff-results/common_in_doc1-and-doc2-' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results['common_key_with_diff_values_list'],
+                       './doc-diff-results/common_key_with_diff_values-' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results['exclusive_in_doc1_list'],
+                       './doc-diff-results/exclusive_in_doc1-' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results['exclusive_in_doc2_list'],
+                       './doc-diff-results/exclusive_in_doc2-' + now.strftime("%Y-%m-%d") + '.csv')
+
 
 
 def _write_out_results(data, filename):
@@ -59,7 +64,10 @@ def _compare_two_files(dict1, dict2):
             exclusive_in_doc1_list[key] = value
 
     exclusive_in_doc2_list = {k: v for k, v in dict2.iteritems() if k not in temp_known_keys}
-    return common_in_doc1_and_doc2_list, common_key_with_diff_values_list, exclusive_in_doc1_list, exclusive_in_doc2_list
+    return { 'common_in_doc1_and_doc2_list': common_in_doc1_and_doc2_list,
+             'common_key_with_diff_values_list': common_key_with_diff_values_list,
+             'exclusive_in_doc1_list': exclusive_in_doc1_list,
+             'exclusive_in_doc2_list': exclusive_in_doc2_list }
 
 
 class Diff:
