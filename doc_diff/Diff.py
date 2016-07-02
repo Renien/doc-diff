@@ -4,15 +4,17 @@ import datetime
 
 
 def gen_comp_report(diff1, diff2):
+    """
+    It will allow to create the comparison
+    results in CSV file format
+    :param diff1: doc1's diff object
+    :param diff2: doc2's diff object
+    """
+    # compute the diff of doc1 & doc2
     evaluation_results = _compare_two_files(diff1.data_dict, diff2.data_dict)
-
     now = datetime.datetime.now()
 
     # write the results for corresponding files
-    _write_out_results(evaluation_results[0], '../results/matching_list_' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[1], '../results/un_matching_list_' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[2], '../results/unknown_list_' + now.strftime("%Y-%m-%d") + '.csv')
-    _write_out_results(evaluation_results[3], '../results/additional_list_' + now.strftime("%Y-%m-%d") + '.csv')
     _write_out_results(evaluation_results[0], '../results/common_in_doc1-and-doc2' + now.strftime("%Y-%m-%d") + '.csv')
     _write_out_results(evaluation_results[1], '../results/common_key_with_diff_values' + now.strftime("%Y-%m-%d") + '.csv')
     _write_out_results(evaluation_results[2], '../results/exclusive_in_doc1' + now.strftime("%Y-%m-%d") + '.csv')
@@ -71,6 +73,10 @@ class Diff:
         self.data_dict = dict()
 
     def read_file(self):
+        """
+        Read the file from the location
+        and iterate the list of lines
+        """
         with open(self._file_name, 'r') as ins:
             for line in ins:
                 self._no_of_records += 1 # calculate the row count
@@ -78,11 +84,21 @@ class Diff:
 
     @staticmethod
     def format_order_recommendations(data):
+        """
+        Format the key-value pairs
+        :param data: values/recommendation
+        :return: cleaned and sorted list
+        """
         tem_list = data.replace('\n', '').replace('\"\"', '').split(',')
         tem_list.sort()
         return tem_list
 
     def construct_key_value(self, line, delimiter):
+        """
+        Convert each line as key-value sets
+        :param line: a row from the document
+        :param delimiter: separate the key and value
+        """
         (key, value) = line.split(delimiter)
         if key not in self.data_dict:
             self.data_dict[key] = ','.join(self.format_order_recommendations(value))
