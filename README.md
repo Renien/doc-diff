@@ -88,7 +88,6 @@ doc-diff
 ```
 
 ## Contribute
-NEED TO CHANGE !!
 For any problem/question or if you think a feature that could make doc-diff lib more useful, do not hesitate to open an issue.
 
 ## License
