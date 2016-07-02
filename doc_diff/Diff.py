@@ -13,6 +13,10 @@ def gen_comp_report(diff1, diff2):
     _write_out_results(evaluation_results[1], '../results/un_matching_list_' + now.strftime("%Y-%m-%d") + '.csv')
     _write_out_results(evaluation_results[2], '../results/unknown_list_' + now.strftime("%Y-%m-%d") + '.csv')
     _write_out_results(evaluation_results[3], '../results/additional_list_' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results[0], '../results/common_in_doc1-and-doc2' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results[1], '../results/common_key_with_diff_values' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results[2], '../results/exclusive_in_doc1' + now.strftime("%Y-%m-%d") + '.csv')
+    _write_out_results(evaluation_results[3], '../results/exclusive_in_doc2' + now.strftime("%Y-%m-%d") + '.csv')
 
 
 def _write_out_results(data, filename):
