@@ -87,6 +87,10 @@ doc-diff
     └── doc_diff_app.py             # Main method file 
 ```
 
+## Current Published Artifacts
+
+- [doc-diff-1.0.0](https://github.com/Renien/doc-diff/tree/1.0.0/tarball)
+
 ## Contribute
 For any problem/question or if you think a feature that could make doc-diff lib more useful, do not hesitate to open an issue.
 
