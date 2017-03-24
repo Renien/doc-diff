@@ -1,4 +1,5 @@
 <h1 align="center">
+<img src="https://raw.githubusercontent.com/Renien/doc-diff/master/doc/blob/doc-diff-logo.png" alt="doc-diff" width="20%" height="20%">
     <br>
         doc-diff
     <br>
@@ -93,6 +94,9 @@ doc-diff
 
 ## Contribute
 For any problem/question or if you think a feature that could make doc-diff lib more useful, do not hesitate to open an issue.
+
+## Thanks
+Thanks [Flat Icon](http://www.flaticon.com/) for the free logo.
 
 ## License
 MIT © [Renien](https://twitter.com/RenienJoseph)
